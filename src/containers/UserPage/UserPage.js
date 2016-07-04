@@ -1,9 +1,9 @@
+import _ from 'lodash';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { loadUserPage, loadMoreStarred } from '../../actions';
 import { loadUser, loadStarred } from '../../sagas';
 import { User, Repo, List } from 'components';
-import zip from 'lodash/array/zip';
 
 class UserPage extends Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class UserPage extends Component {
         <hr />
         <List
           renderItem={this.renderRepo}
-          items={zip(starredRepos, starredRepoOwners)}
+          items={_.zip(starredRepos, starredRepoOwners)}
           onLoadMoreClick={this.handleLoadMoreClick}
           loadingLabel={`Loading ${login}’s starred...`}
           {...starredPagination}
