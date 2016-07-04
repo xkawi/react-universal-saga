@@ -5,7 +5,3 @@ dist/
 webpack-assets.json
 webpack-stats.json
 npm-debug.log
-src/components/Widget/Footer/my.svg
-src/components/Widget/TermsAccordion/backup
-src/theme/sg.svg
-src/components/Widget/AuthPopup/backup.txt
