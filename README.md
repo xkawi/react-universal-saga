@@ -161,6 +161,6 @@ To keep watching your test suites that you are working on, just set `singleRun: 
 - [ ] Use Proxy Server for better performance and security
 - [ ] Simple authentication saga flow
 - [ ] Provide a more realistic example that has navigation and form
-- [ ] Upgrade to React ^15
+- [x] Upgrade to React ^15
 - [ ] Use [Jest](https://facebook.github.io/jest/) for unit testing
 - [ ] Better handling of environment variables
