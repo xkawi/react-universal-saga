@@ -36,7 +36,16 @@
     "start-dev": "better-npm-run start-dev",
     "watch-client": "better-npm-run watch-client",
     "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev\"",
-    "test": "karma start"
+    "test": "jest"
+  },
+  "jest": {
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom",
+      "<rootDir>/node_modules/react-addons-test-utils",
+      "<rootDir>/node_modules/react-router",
+      "<rootDir>/node_modules/babel-runtime"
+    ]
   },
   "betterScripts": {
     "start-prod": {
@@ -115,6 +124,7 @@
     "autoprefixer-loader": "^3.1.0",
     "babel-core": "^6.5.2",
     "babel-eslint": "^6.1.0",
+    "babel-jest": "^9.0.0",
     "babel-loader": "^6.2.1",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-react-transform": "^2.0.0",
@@ -131,7 +141,6 @@
     "better-npm-run": "0.0.9",
     "bootstrap-sass": "^3.3.5",
     "bootstrap-sass-loader": "^1.0.9",
-    "chai": "^3.3.0",
     "clean-webpack-plugin": "^0.1.6",
     "concurrently": "^2.1.0",
     "css-loader": "^0.23.1",
@@ -144,18 +153,9 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "font-awesome": "^4.4.0",
     "font-awesome-webpack": "0.0.4",
+    "jest-cli": "^13.0.0",
     "json-loader": "^0.5.4",
-    "karma": "^1.1.0",
-    "karma-cli": "^1.0.1",
-    "karma-mocha": "^1.1.1",
-    "karma-mocha-reporter": "^2.0.4",
-    "karma-phantomjs-launcher": "^1.0.1",
-    "karma-sourcemap-loader": "^0.3.5",
-    "karma-webpack": "^1.7.0",
-    "mocha": "^2.3.3",
     "node-sass": "^3.4.2",
-    "phantomjs": "^2.1.7",
-    "phantomjs-polyfill": "0.0.2",
     "react-a11y": "^0.3.3",
     "react-addons-test-utils": "^15.2.0",
     "react-transform-catch-errors": "^1.0.2",
@@ -165,7 +165,6 @@
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.0.11",
     "sass-loader": "^4.0.0",
-    "sinon": "^1.17.2",
     "strip-loader": "^0.1.2",
     "style-loader": "^0.13.1",
     "timekeeper": "0.1.1",
