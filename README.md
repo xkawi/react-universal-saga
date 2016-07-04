@@ -1,3 +1,10 @@
+
+# React Universal Saga
+
+[![Build Status](https://travis-ci.org/xkawi/react-universal-saga.svg?branch=master)](https://travis-ci.org/xkawi/react-universal-saga) [![Dependency Status](https://david-dm.org/xkawi/react-universal-saga.svg)](https://david-dm.org/xkawi/react-universal-saga) [![devDependency Status](https://david-dm.org/xkawi/react-universal-saga/dev-status.svg)](https://david-dm.org/xkawi/react-universal-saga#info=devDependencies)
+
+---
+
 ## Introduction
 
 ### Getting Started
