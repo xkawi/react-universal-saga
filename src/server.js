@@ -1,6 +1,6 @@
 import Express from 'express';
 import React from 'react';
-import ReactDOM from 'react-dom/server';
+import ReactDOMServer from 'react-dom/server';
 import favicon from 'serve-favicon';
 import compression from 'compression';
 import http from 'http';
@@ -38,7 +38,7 @@ app.use((req, res) => {
 
   function hydrateOnClient() {
     const htmlComponent = <Html assets={assets} store={store} />;
-    const renderedDomString = ReactDOM.renderToString(htmlComponent);
+    const renderedDomString = ReactDOMServer.renderToString(htmlComponent);
     res.send(`<!doctype html>\n ${renderedDomString}`);
   }
 
@@ -72,7 +72,7 @@ app.use((req, res) => {
         global.navigator = { userAgent: req.headers['user-agent'] };
 
         const htmlComponent = <Html assets={assets} component={rootComponent} store={store} />;
-        const renderedDomString = ReactDOM.renderToString(htmlComponent);
+        const renderedDomString = ReactDOMServer.renderToString(htmlComponent);
         res.status(200).send(`<!doctype html>\n ${renderedDomString}`);
       }).catch((e) => {
         console.log(e.stack);

@@ -1,6 +1,6 @@
 import * as _api from './api';
-import { browserHistory as _history } from 'react-router';
-import useScroll from 'scroll-behavior/lib/useStandardScroll';
+import { browserHistory } from 'react-router';
+import withScroll from 'scroll-behavior';
 
 export const api = _api;
-export const history = useScroll(() => _history)();
+export const history = withScroll(browserHistory);

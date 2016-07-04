@@ -10,6 +10,8 @@ Universal React App Starter featuring Redux Saga. Heavily modified version of [R
 
 `$ npm run dev` (run in development mode)
 
+PS: if you notice warning in terminal, you can safely ignore it, as it will be gone after successfuly `npm run build && npm run start`.
+
 ### Libraries Used 
 
 * [Universal](https://medium.com/@mjackson/universal-javascript-4761051b7ae9) rendering, with Client and Server Side Data Fetching
