@@ -14,7 +14,7 @@ export default class Root extends Component {
   onUpdate() {
     const { store, type } = this.props;
     if (type !== 'server') {
-      let state = store.getState();
+      const state = store.getState();
       if (_.has(state, 'router.pathname')) {
         GoogleAnalytics.pageview(state.router.pathname);
       }
@@ -39,4 +39,6 @@ Root.propTypes = {
   store: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   routes: PropTypes.node.isRequired,
+  type: PropTypes.string,
+  renderProps: PropTypes.object
 };

@@ -1,57 +1,54 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { loadRepoPage, loadMoreStargazers } from '../../actions'
-import {
-  Repo, User, List
-} from 'components';
-import styles from './RepoPage.scss';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { loadRepoPage, loadMoreStargazers } from '../../actions';
+import { Repo, User, List } from 'components';
+import styles from './RepoPage.scss'; // eslint-disable-line
 
 class RepoPage extends Component {
   constructor(props) {
-    super(props)
-    this.renderUser = this.renderUser.bind(this)
-    this.handleLoadMoreClick = this.handleLoadMoreClick.bind(this)
+    super(props);
+    this.renderUser = this.renderUser.bind(this);
+    this.handleLoadMoreClick = this.handleLoadMoreClick.bind(this);
   }
 
   componentWillMount() {
-    this.props.loadRepoPage(this.props.fullName)
+    this.props.loadRepoPage(this.props.fullName);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.fullName !== this.props.fullName) {
-      this.props.loadRepoPage(nextProps.fullName)
+      this.props.loadRepoPage(nextProps.fullName);
     }
   }
 
   handleLoadMoreClick() {
-    this.props.loadMoreStargazers(this.props.fullName)
+    this.props.loadMoreStargazers(this.props.fullName);
   }
 
   renderUser(user) {
-    return (
-      <User user={user}
-            key={user.login} />
-    )
+    return (<User user={user} key={user.login} />);
   }
 
   render() {
-    const { repo, owner, name } = this.props
+    const { repo, owner, name } = this.props;
     if (!repo || !owner) {
-      return <h1><i>Loading {name} details...</i></h1>
+      return (<h1><i>Loading {name} details...</i></h1>);
     }
 
-    const { stargazers, stargazersPagination } = this.props
+    const { stargazers, stargazersPagination } = this.props;
     return (
       <div className={styles.container}>
         <Repo repo={repo} owner={owner} />
         <hr />
-        <List renderItem={this.renderUser}
-              items={stargazers}
-              onLoadMoreClick={this.handleLoadMoreClick}
-              loadingLabel={`Loading stargazers of ${name}...`}
-              {...stargazersPagination} />
+        <List
+          renderItem={this.renderUser}
+          items={stargazers}
+          onLoadMoreClick={this.handleLoadMoreClick}
+          loadingLabel={`Loading stargazers of ${name}...`}
+          {...stargazersPagination}
+        />
       </div>
-    )
+      );
   }
 }
 
@@ -64,18 +61,18 @@ RepoPage.propTypes = {
   stargazersPagination: PropTypes.object,
   loadRepoPage: PropTypes.func.isRequired,
   loadMoreStargazers: PropTypes.func.isRequired
-}
+};
 
 function mapStateToProps(state) {
-  const { login, name } = state.router.params
+  const { login, name } = state.router.params;
   const {
     pagination: { stargazersByRepo },
     entities: { users, repos }
-  } = state
+  } = state;
 
-  const fullName = `${login}/${name}`
-  const stargazersPagination = stargazersByRepo[fullName] || { ids: [] }
-  const stargazers = stargazersPagination.ids.map(id => users[id])
+  const fullName = `${login}/${name}`;
+  const stargazersPagination = stargazersByRepo[fullName] || { ids: [] };
+  const stargazers = stargazersPagination.ids.map(id => users[id]);
 
   return {
     fullName,
@@ -84,10 +81,10 @@ function mapStateToProps(state) {
     stargazersPagination,
     repo: repos[fullName],
     owner: users[login]
-  }
+  };
 }
 
 export default connect(mapStateToProps, {
   loadRepoPage,
   loadMoreStargazers
-})(RepoPage)
+})(RepoPage);

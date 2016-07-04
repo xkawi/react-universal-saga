@@ -8,7 +8,7 @@ import {
   updateRouterState,
   resetErrorMessage
 } from '../../actions';
-import styles from './App.scss';
+import styles from './App.scss'; // eslint-disable-line
 
 class App extends Component {
   constructor(props) {
@@ -19,42 +19,40 @@ class App extends Component {
   componentWillMount() {
     this.props.updateRouterState({
       pathname: this.props.location.pathname,
-      params  : this.props.params
-    })
+      params: this.props.params
+    });
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.errorMessage) {
       // handle error here
     }
-    if(this.props.location.pathname !== nextProps.location.pathname)
+    if (this.props.location.pathname !== nextProps.location.pathname) {
       this.props.updateRouterState({
         pathname: nextProps.location.pathname,
-        params  : nextProps.params
+        params: nextProps.params
       });
+    }
   }
 
   handleDismissClick(e) {
-    this.props.resetErrorMessage()
-    e.preventDefault()
+    this.props.resetErrorMessage();
+    e.preventDefault();
   }
 
   handleChange(nextValue) {
-    this.props.navigate(`/${nextValue}`)
+    this.props.navigate(`/${nextValue}`);
   }
 
   render() {
     const { children, inputValue } = this.props;
     return (
       <div className={styles.app}>
-        <Helmet 
+        <Helmet
           title="React Universal Saga"
-          meta={[
-            {"property": "og:site_name", "content": "React Universal Saga"},
-          ]}
+          meta={[{ property: 'og:site_name', content: 'React Universal Saga' }]}
         />
-        <Explore value={inputValue}
-                 onChange={this.handleChange} />
+        <Explore value={inputValue} onChange={this.handleChange} />
         <div className={styles.content}>
           {children}
         </div>
@@ -70,6 +68,10 @@ App.propTypes = {
   updateRouterState: PropTypes.func.isRequired,
   resetErrorMessage: PropTypes.func.isRequired,
   children: PropTypes.node,
+  location: PropTypes.shape({
+    pathname: PropTypes.string
+  }),
+  params: PropTypes.object
 };
 
 // function preload() {

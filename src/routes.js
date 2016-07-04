@@ -1,8 +1,8 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route } from 'react-router';
 import {
   App,
-  NotFound, // eslint-disable-line no-unused-vars
+  NotFound,
   UserPage,
   RepoPage
 } from 'containers';
@@ -14,8 +14,8 @@ import {
  * the body must be more than 1 line (http://eslint.org/docs/rules/arrow-body-style);
  */
 
-// eslint-disable-next-line no-unused-vars
 export default (store) => {
+  // eslint-disable-next-line no-unused-vars
   const requireLogin = (nextState, replace, cb) => {
     function checkAuth() {
       const { auth: { isAuthenticated } } = store.getState();
@@ -37,6 +37,8 @@ export default (store) => {
     <Route path="/" component={App}>
       <Route path="/:login" component={UserPage} />
       <Route path="/:login/:name" component={RepoPage} />
+      <Route path="/404" component={NotFound} />
+      <Route path="*" component={NotFound} />
     </Route>
   );
 };
