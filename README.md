@@ -31,7 +31,7 @@ PS: if you notice warning in terminal, you can safely ignore it, as it will be g
 * [bootstrap-sass-loader](https://github.com/shakacode/bootstrap-sass-loader) and [font-awesome-webpack](https://github.com/gowravshekar/font-awesome-webpack) to customize Bootstrap and FontAwesome
 * [react-helmet](https://github.com/nfl/react-helmet) to manage title and meta tag information on both server and client
 * [webpack-isomorphic-tools](https://github.com/halt-hammerzeit/webpack-isomorphic-tools) to allow require() work for statics both on client and server
-* [mocha](https://mochajs.org/) to allow writing unit tests for the project.
+* [Jest](https://facebook.github.io/jest/) to allow writing unit tests for the project.
 * Refer to `package.json` for more details
 
 ## New to React?
