@@ -1,0 +1,21 @@
+@import '../../theme/style';
+
+.loading-container {
+  color: grey;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 1px;
+  .content {
+    margin: 0 auto;
+    .spinner {
+      color: grey;
+      margin-right: 20px;
+    }
+    .error {
+      color: red;
+      margin-right: 20px;
+    }
+  }
+}

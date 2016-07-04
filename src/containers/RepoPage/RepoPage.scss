@@ -1,0 +1,9 @@
+@import '../../theme/style';
+
+.container {
+  margin-bottom: 30px;
+  background-color: $gray-light;
+  .list {
+    margin-top: 15px;
+  }
+}

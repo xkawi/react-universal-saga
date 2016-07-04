@@ -1,0 +1,19 @@
+.container {
+  color: grey;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 100%;
+  letter-spacing: 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  .text {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .logo {
+    color: grey;
+  }
+}

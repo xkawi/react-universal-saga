@@ -1,0 +1,30 @@
+
+@import '~bootstrap-sass/assets/stylesheets/bootstrap/mixins';
+
+.app {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 10px 10px;
+  .brand {
+    position: absolute;
+    $size: 40px;
+    top: 5px;
+    left: 5px;
+    display: inline-block;
+    background: #1daede no-repeat center center;
+    width: $size;
+    height: $size;
+    background-size: 80%;
+    margin: 0 10px 0 0;
+    border-radius: $size / 2;
+  }
+  nav :global(.fa) {
+    font-size: 2em;
+    line-height: 20px;
+  }
+  .content {
+    flex: 1;
+    width: 100%;
+  }
+}
