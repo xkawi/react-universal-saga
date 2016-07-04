@@ -40,7 +40,7 @@ export const fetchStarred = fetchEntity.bind(null, starred, api.fetchStarred);
 export const fetchStargazers = fetchEntity.bind(null, stargazers, api.fetchStargazers);
 
 // load user unless it is cached
-function* loadUser(login, requiredFields) {
+export function* loadUser(login, requiredFields) {
   const userObj = yield select(getUser, login);
   if (!userObj || requiredFields.some(key => !userObj.hasOwnProperty(key))) {
     yield call(fetchUser, login);
@@ -56,7 +56,7 @@ function* loadRepo(fullName, requiredFields) {
 }
 
 // load next page of repos starred by this user unless it is cached
-function* loadStarred(login, loadMore) {
+export function* loadStarred(login, loadMore) {
   const starredByUser = yield select(getStarredByUser, login);
   if (!starredByUser || !starredByUser.pageCount || loadMore) {
     yield call(

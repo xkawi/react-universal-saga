@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { loadUserPage, loadMoreStarred } from '../../actions';
+import { loadUser, loadStarred } from '../../sagas';
 import { User, Repo, List } from 'components';
 import zip from 'lodash/array/zip';
 
@@ -82,6 +83,16 @@ function mapStateToProps(state) {
     user: users[login]
   };
 }
+
+function preload({ login }) {
+  console.log('logingggggggg', login);
+  // (login, requiredFields) as loasUserPageSaga
+  return [
+    [loadUser, login, []],
+    [loadStarred, login]
+  ];
+}
+UserPage.preload = preload;
 
 export default connect(mapStateToProps, {
   loadUserPage,
