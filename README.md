@@ -160,3 +160,4 @@ To keep watching your test suites that you are working on, just set `singleRun: 
 - [ ] Provide a more realistic example that has navigation and form
 - [ ] Upgrade to React ^15
 - [ ] Use [Jest](https://facebook.github.io/jest/) for unit testing
+- [ ] Better handling of environment variables
