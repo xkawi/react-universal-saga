@@ -119,7 +119,7 @@ We also spit out the `redux` state into a global `window.__data` variable in the
 
 ### Server-side Data Fetching
 
-The [redux-saga](https://github.com/yelouafi/redux-saga) provides a mechanism for server-side data fetching from the actual backend API servers/services, so on client-side (React) there is no need to do additional network call. You have to define the Sagas that a container may need (refers to `containers/App.js > App.preload` for example), so that server-side only fetches data that is needed by the container/component. PS: You have the flexibility to implement additional logic (e.g. handle authentication) when fetching data at server-side rendering stage, as it differs from client-side. 
+The [redux-saga](https://github.com/yelouafi/redux-saga) provides a mechanism for server-side data fetching from the actual backend API servers/services, so on client-side (React) there is no need to do additional network call. You have to define the Sagas that a container may need (refers to `containers/UserPage.js > UserPage.preload` for example), so that server-side only fetches data that is needed by the container/component. PS: You have the flexibility to implement additional logic (e.g. handle authentication) when fetching data at server-side rendering stage, as it differs from client-side. 
 
 ### Client Side
 
