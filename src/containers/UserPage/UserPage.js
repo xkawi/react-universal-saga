@@ -85,8 +85,6 @@ function mapStateToProps(state) {
 }
 
 function preload({ login }) {
-  console.log('logingggggggg', login);
-  // (login, requiredFields) as loasUserPageSaga
   return [
     [loadUser, login, []],
     [loadStarred, login]
