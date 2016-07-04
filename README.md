@@ -6,7 +6,7 @@ Universal React App Starter featuring Redux Saga. Heavily modified version of [R
 
 `$ git clone https://github.com/xkawi/react-universal-saga`
 
-`$ npm install`
+`$ cd react-universal-saga && npm install`
 
 `$ npm run dev` (run in development mode)
 
