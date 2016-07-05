@@ -22,8 +22,8 @@
     "no-console": 0,
     "no-alert": 0,
     "strict": 0,
-    "arrow-body-style": ["error", "as-needed"],
-    "no-confusing-arrow": ["error", {"allowParens": true}]
+    "arrow-body-style": [2, "as-needed"],
+    "no-confusing-arrow": [2, {"allowParens": true}]
   },
   "plugins": [
     "react", "import"
