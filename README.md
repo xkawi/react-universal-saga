@@ -74,7 +74,7 @@ Core Concepts to learn if you are new to ReactJS and this repo:
 
 10. [Reading + Hands-on] [Redux Saga](http://yelouafi.github.io/redux-saga/)
 
-11. [*Reading - optional*] [Relay](https://code-cartoons.com/a-cartoon-intro-to-facebook-s-relay-part-1-3ec1a127bca5)
+11. Everything - [Awesome Redux](https://github.com/xgrommx/awesome-redux)
 
 ## Development Workflow
 
@@ -162,6 +162,12 @@ The project uses [Jest](https://facebook.github.io/jest) to run your unit tests 
 An example is available at `components > User`.
 
 To run the tests in the project, just simply run `npm test`.
+
+## Notable Alternatives
+
+* [react-boilerplate](https://github.com/mxstbr/react-boilerplate)
+* [react-server](https://github.com/redfin/react-server)
+* [retax](https://github.com/retaxJS/retax)
 
 ## TODO
 
