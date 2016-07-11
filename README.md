@@ -177,3 +177,4 @@ To run the tests in the project, just simply run `npm test`.
 - [x] Upgrade to React ^15
 - [x] Use [Jest](https://facebook.github.io/jest/) for unit testing
 - [ ] Better handling of environment variables
+- [ ] Borrow some best practices from react-boilerplate 
