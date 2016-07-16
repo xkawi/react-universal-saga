@@ -1,13 +1,18 @@
 
 # React Universal Saga
 
-[![Build Status](https://travis-ci.org/xkawi/react-universal-saga.svg?branch=master)](https://travis-ci.org/xkawi/react-universal-saga) [![Dependency Status](https://david-dm.org/xkawi/react-universal-saga.svg)](https://david-dm.org/xkawi/react-universal-saga) [![devDependency Status](https://david-dm.org/xkawi/react-universal-saga/dev-status.svg)](https://david-dm.org/xkawi/react-universal-saga#info=devDependencies)
+[![React Universal Saga Version](https://img.shields.io/npm/v/react-universal-saga.svg?maxAge=2592000)](https://img.shields.io/npm/dm/react-universal-saga.svg?maxAge=2592000)
+[![Downloads](https://img.shields.io/npm/dm/react-universal-saga.svg?maxAge=2592000)](https://img.shields.io/npm/dm/react-universal-saga.svg?maxAge=2592000)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/xkawi/react-universal-saga/master/LICENSE)
+
+
+[![Build Status](https://travis-ci.org/xkawi/react-universal-saga.svg?branch=master)](https://travis-ci.org/xkawi/react-universal-saga)
+[![Dependency Status](https://david-dm.org/xkawi/react-universal-saga.svg)](https://david-dm.org/xkawi/react-universal-saga)
+[![devDependency Status](https://david-dm.org/xkawi/react-universal-saga/dev-status.svg)](https://david-dm.org/xkawi/react-universal-saga#info=devDependencies)
 
 ---
 
-## Introduction
-
-### Getting Started
+## Getting Started
 
 Universal React App Starter featuring Redux Saga. Heavily modified version of [React Redux Universal Hot Example](https://github.com/erikras/react-redux-universal-hot-example) combined with Redux Saga [real-world](https://github.com/yelouafi/redux-saga/tree/master/examples/real-world) example.
 
@@ -17,12 +22,10 @@ Universal React App Starter featuring Redux Saga. Heavily modified version of [R
 
 `$ npm run dev` (run in development mode)
 
-PS: if you notice warning in terminal, you can safely ignore it, as it will be gone after successfuly `npm run build && npm run start`.
-
-### Libraries Used 
+## Features
 
 * [Universal](https://medium.com/@mjackson/universal-javascript-4761051b7ae9) rendering, with Client and Server Side Data Fetching
-* [React](https://github.com/facebook/react)
+* [React](https://github.com/facebook/react) - latest version `^15.2.0`
 * [Redux](https://github.com/rackt/redux)'s futuristic [Flux](https://facebook.github.io/react/blog/2014/05/06/flux.html) implementation
 * [Redux Saga](https://github.com/yelouafi/redux-saga) to handle all of your Side Effects logic in a central place
 * [React Router](https://github.com/rackt/react-router)
@@ -34,8 +37,8 @@ PS: if you notice warning in terminal, you can safely ignore it, as it will be g
 * [Redux Dev Tools](https://github.com/gaearon/redux-devtools) for next generation DX (developer experience). Watch [Dan Abramov's talk](https://www.youtube.com/watch?v=xsSnOQynTHs).
 * [ESLint](http://eslint.org) to maintain a consistent code style
 * [redux-form](https://github.com/erikras/redux-form) to manage form state in Redux
-* [style-loader](https://github.com/webpack/style-loader), [sass-loader](https://github.com/jtangelder/sass-loader) and [less-loader](https://github.com/webpack/less-loader) to allow import of stylesheets in plain css, sass and less,
-* [bootstrap-sass-loader](https://github.com/shakacode/bootstrap-sass-loader) and [font-awesome-webpack](https://github.com/gowravshekar/font-awesome-webpack) to customize Bootstrap and FontAwesome
+* [PostCSS](https://github.com/postcss/postcss-loader), [style-loader](https://github.com/webpack/style-loader), [sass-loader](https://github.com/jtangelder/sass-loader) and [less-loader](https://github.com/webpack/less-loader) to allow import of stylesheets in plain css, sass and less,
+* [bootstrap-loader](https://github.com/shakacode/bootstrap-loader) and [font-awesome-webpack](https://github.com/gowravshekar/font-awesome-webpack) to customize Bootstrap and FontAwesome
 * [react-helmet](https://github.com/nfl/react-helmet) to manage title and meta tag information on both server and client
 * [webpack-isomorphic-tools](https://github.com/halt-hammerzeit/webpack-isomorphic-tools) to allow require() work for statics both on client and server
 * [Jest](https://facebook.github.io/jest/) to allow writing unit tests for the project.
@@ -129,7 +132,7 @@ We also spit out the `redux` state into a global `window.__data` variable in the
 
 ### Server-side Data Fetching
 
-The [redux-saga](https://github.com/yelouafi/redux-saga) provides a mechanism for server-side data fetching from the actual backend API servers/services, so on client-side (React) there is no need to do additional network call. You have to define the Sagas that a container may need (refers to `containers/UserPage.js > UserPage.preload` for example), so that server-side only fetches data that is needed by the container/component. PS: You have the flexibility to implement additional logic (e.g. handle authentication) when fetching data at server-side rendering stage, as it differs from client-side. 
+The [redux-saga](https://github.com/yelouafi/redux-saga) provides a mechanism for server-side data fetching from the actual backend API servers/services, when it reaches client-side (React) there is no need to do additional network call. You have to define the Sagas that a container need (refers to `containers/UserPage.js > UserPage.preload` for example) for server-side to fetch. PS: You have the flexibility to implement additional logic (e.g. handle authentication) when fetching data at server-side rendering stage, as it differs from client-side. 
 
 ### Client Side
 
@@ -138,6 +141,18 @@ The client side entry point is reasonably named `client.js`. All it does is load
 ### Redux Middleware
 
 Currently, we only use Saga Middleware and Logger Middleware (for development). If you need to use or add custom middlewares, you can do so by modifying `store/configureStore.dev.js` (for dev env) or `store.configureStore.prod.js` (for prod env).
+
+### Handling Authentication
+
+If you want to implement authentication/authorization feature, follow this issue posted on redux-saga repo - [Question: Authentication flow](https://github.com/yelouafi/redux-saga/issues/14) - it is my main source of reference.
+
+### Unit Tests
+
+The project uses [Jest](https://facebook.github.io/jest) to run your unit tests and the [Test Utilities](http://facebook.github.io/react/docs/test-utils.html) from Facebook api.
+
+An example is available at `components > User`.
+
+To run the tests in the project, just simply run `npm test`.
 
 ## Styling
 
@@ -154,14 +169,6 @@ Then you set the `className` of your element to match one of the CSS classes in 
 ### Global Style Variables
 
 `react-universal-saga` support global style variables by defining the variable in `theme/style.scss`. Once defined, you can use in any scss file so long it is imported (refer to `RepoPage.scss` for example). 
-
-## Unit Tests
-
-The project uses [Jest](https://facebook.github.io/jest) to run your unit tests and the [Test Utilities](http://facebook.github.io/react/docs/test-utils.html) from Facebook api.
-
-An example is available at `components > User`.
-
-To run the tests in the project, just simply run `npm test`.
 
 ## Notable Alternatives
 
