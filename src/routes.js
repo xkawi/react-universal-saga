@@ -7,8 +7,8 @@ import {
   RepoPage
 } from 'containers';
 
-export default (store) => {
-  return (
+export default () => {
+  const routes = (
     <Route path="/" component={App}>
       <Route path="/:login" component={UserPage} />
       <Route path="/:login/:name" component={RepoPage} />
@@ -16,4 +16,5 @@ export default (store) => {
       <Route path="*" component={NotFound} />
     </Route>
   );
+  return routes;
 };
