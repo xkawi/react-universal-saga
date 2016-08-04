@@ -17,18 +17,18 @@ module.exports = Object.assign({
     googleAnalytics: {
       appId: process.env.GOOGLE_ANALYTIC_ID || 'UA-XXXXXXXX-X'
     },
-    title: 'React Redux Isomorphic Saga',
-    description: 'isomorphic react starter kit, plus redux & redux saga',
+    title: 'React Universal Saga',
+    description: 'Universal React Starter Kit ft. Redux Saga',
     head: {
-      titleTemplate: 'Example: %s',
+      titleTemplate: 'React Universal Saga',
       meta: [
-        { name: 'description', content: 'All the modern best practices in one example.' },
+        { name: 'description', content: 'Universal React Starter Kit ft. Redux Saga' },
         { charset: 'utf-8' },
-        { property: 'og:site_name', content: 'React Redux Isomorphic Saga' },
-        { property: 'og:image', content: 'https://react-redux.herokuapp.com/logo.jpg' },
+        { property: 'og:site_name', content: 'React Universal Saga' },
+        { property: 'og:image', content: 'https://facebook.github.io/react/img/logo_og.png' },
         { property: 'og:locale', content: 'en_US' },
-        { property: 'og:title', content: 'React Redux Isomorphic Saga' },
-        { property: 'og:description', content: 'All the modern best practices in one example.' },
+        { property: 'og:title', content: 'React Universal Saga' },
+        { property: 'og:description', content: 'Universal React Starter Kit ft. Redux Saga' },
         { property: 'og:card', content: 'summary' },
         { property: 'og:site', content: '@xkawi' },
         { property: 'og:creator', content: '@xkawi' },
