@@ -168,6 +168,8 @@ To run the tests in the project, just simply run `npm test`.
 * [react-boilerplate](https://github.com/mxstbr/react-boilerplate)
 * [react-server](https://github.com/redfin/react-server)
 * [retax](https://github.com/retaxJS/retax)
+* [react-universally](https://github.com/ctrlplusb/react-universally)
+* [create-react-app](https://github.com/facebookincubator/create-react-app)
 
 ## TODO
 
