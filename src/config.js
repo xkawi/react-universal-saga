@@ -11,8 +11,8 @@ const environment = {
 
 module.exports = Object.assign({
   host: process.env.HOST || 'localhost',
-  port: process.env.PORT,
-  apiBaseUrl: process.env.API_URL || 'http://localhost:8000',
+  port: process.env.PORT || '3000',
+  apiBaseUrl: process.env.API_URL || 'https://api.github.com',
   app: {
     googleAnalytics: {
       appId: process.env.GOOGLE_ANALYTIC_ID || 'UA-XXXXXXXX-X'

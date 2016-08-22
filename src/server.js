@@ -4,7 +4,9 @@ import ReactDOMServer from 'react-dom/server';
 import favicon from 'serve-favicon';
 import compression from 'compression';
 import http from 'http';
+import proxy from 'express-http-proxy';
 import path from 'path';
+import url from 'url';
 import PrettyError from 'pretty-error';
 import { match, createMemoryHistory } from 'react-router';
 
@@ -25,6 +27,12 @@ app.disable('x-powered-by');
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 app.use(Express.static(path.join(__dirname, '..', 'static')));
+
+// Proxy to API
+app.use('/api', proxy(config.apiBaseUrl, {
+  // eslint-disable-next-line
+  forwardPath: (req, res) => url.parse(req.url).path
+}));
 
 app.use((req, res) => {
   if (__DEVELOPMENT__) {

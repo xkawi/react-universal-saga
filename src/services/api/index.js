@@ -1,6 +1,7 @@
 import { Schema, arrayOf, normalize } from 'normalizr';
 import { camelizeKeys } from 'humps';
 import 'isomorphic-fetch';
+import config from 'config';
 
 // Extracts the next page URL from Github API response.
 function getNextPageUrl(response) {
@@ -17,12 +18,18 @@ function getNextPageUrl(response) {
   return nextLink.split(';')[0].slice(1, -1);
 }
 
-const API_ROOT = 'https://api.github.com/';
+const PROXY_ROOT = '/api';
 
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
 function callApi(endpoint, schema) {
-  const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint;
+  let fullUrl = (endpoint.indexOf(PROXY_ROOT) === -1) ? `${PROXY_ROOT}/${endpoint}` : endpoint;
+
+  // If request comes from server side, call API url directly.
+  if (__SERVER__) {
+    fullUrl = (endpoint.indexOf(config.apiBaseUrl) === -1)
+                  ? `${config.apiBaseUrl}/${endpoint}` : endpoint;
+  }
 
   return fetch(fullUrl)
     .then(response =>
@@ -43,7 +50,7 @@ function callApi(endpoint, schema) {
     })
     .then(
       response => ({ response }),
-      error => ({ error: error.message || 'Something bad happened' })
+      error => ({ error: error.message || 'Something bad happened.' })
       );
 }
 
