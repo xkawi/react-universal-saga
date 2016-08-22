@@ -6,6 +6,7 @@ import compression from 'compression';
 import http from 'http';
 import proxy from 'express-http-proxy';
 import path from 'path';
+import url from 'url';
 import PrettyError from 'pretty-error';
 import { match, createMemoryHistory } from 'react-router';
 
@@ -29,9 +30,8 @@ app.use(Express.static(path.join(__dirname, '..', 'static')));
 
 // Proxy to API
 app.use('/api', proxy(config.apiBaseUrl, {
-  forwardPath: function(req, res) {
-    return require('url').parse(req.url).path;
-  }
+  // eslint-disable-next-line
+  forwardPath: (req, res) => url.parse(req.url).path
 }));
 
 app.use((req, res) => {

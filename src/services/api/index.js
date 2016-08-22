@@ -23,13 +23,14 @@ const PROXY_ROOT = '/api';
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
 function callApi(endpoint, schema) {
-  let fullUrl = (endpoint.indexOf(PROXY_ROOT) === -1) ? PROXY_ROOT + '/' + endpoint : endpoint;
-  
+  let fullUrl = (endpoint.indexOf(PROXY_ROOT) === -1) ? `${PROXY_ROOT}/${endpoint}` : endpoint;
+
   // If request comes from server side, call API url directly.
   if (__SERVER__) {
-    fullUrl = (endpoint.indexOf(config.apiBaseUrl) === -1) ? config.apiBaseUrl + '/' + endpoint : endpoint;
+    fullUrl = (endpoint.indexOf(config.apiBaseUrl) === -1)
+                  ? `${config.apiBaseUrl}/${endpoint}` : endpoint;
   }
-  
+
   return fetch(fullUrl)
     .then(response =>
       response.json().then(json => ({ json, response }))
