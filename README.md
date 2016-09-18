@@ -184,10 +184,15 @@ Then you set the `className` of your element to match one of the CSS classes in 
 
 ## TODO
 
-- [ ] Use Proxy Server for better performance and security
+- [x] Use Proxy Server for better performance and security
 - [ ] Simple authentication saga flow
 - [ ] Provide a more realistic example that has navigation and form
 - [x] Upgrade to React ^15
 - [x] Use [Jest](https://facebook.github.io/jest/) for unit testing
 - [ ] Better handling of environment variables
-- [ ] Borrow some best practices from react-boilerplate 
+- [x] Borrow some best practices from react-boilerplate (refer to [react-universal-saga-modular](https://github.com/xkawi/react-universal-saga-modular))
+
+Any contribution is welcome.
+
+Cheers,
+Kawi
