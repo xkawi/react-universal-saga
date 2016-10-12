@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import has from 'lodash/has';
 import React, { Component, PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import { Router, RouterContext } from 'react-router';
@@ -14,7 +14,7 @@ export default class Root extends Component {
     const { store, type } = this.props;
     if (type !== 'server') {
       const state = store.getState();
-      if (_.has(state, 'router.pathname')) {
+      if (has(state, 'router.pathname')) {
         GoogleAnalytics.pageview(state.router.pathname);
       }
     }
