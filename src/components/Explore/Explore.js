@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Button } from 'react-bootstrap';
+import  Button  from 'react-bootstrap/lib/Button';
 
 const GITHUB_REPO = 'https://github.com/xkawi/react-universal-saga';
 
