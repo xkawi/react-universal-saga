@@ -40,6 +40,7 @@ class Html extends Component {
         </head>
         <body>
           <div id="content" dangerouslySetInnerHTML={{ __html: content }}/>
+          <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
           <script dangerouslySetInnerHTML={{ __html: `window.__data=${serialize(store.getState())};` }} charSet="UTF-8" />
           <script src={assets.javascript.main} charSet="UTF-8" />          
         </body>

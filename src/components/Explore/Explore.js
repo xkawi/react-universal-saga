@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import Button from 'react-bootstrap/lib/Button';
 
 const GITHUB_REPO = 'https://github.com/xkawi/react-universal-saga';
 
@@ -42,7 +41,7 @@ export default class Explore extends Component {
       <div>
         <p>Type a username or repo full name and hit 'Go': </p>
         <input size="45" ref="input" defaultValue={this.props.value} onKeyUp={this.handleKeyUp} />
-        <Button bsStyle="primary" onClick={this.handleGoClick}>Go!</Button>
+        <button type="button" className="btn btn-primary" onClick={this.handleGoClick}>Go!</button>
         <p>Code on <a href={GITHUB_REPO} target="_blank">Github</a>.</p>
         <p>Move the DevTools with Ctrl+W or hide them with Ctrl+H.</p>
       </div>
