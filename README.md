@@ -24,7 +24,7 @@ Universal React App Starter featuring Redux Saga. Heavily modified version of [R
 
 Live Demo: [react-universal-saga.herokuapp.com](https://react-universal-saga.herokuapp.com)
 
-UPDATE: Checkout [react-universal-saga-modular](https://github.com/xkawi/react-universal-saga-modular) for an evolution of react-universal-saga with a more modular structure and update dependencies. Just a heads up, I might be maintaining react-universal-saga-modular more frequently than this. Though if you have any questions or feedback or even PR, feel free to contribute. :smile:
+UPDATE: Checkout [react-universal-saga-modular](https://github.com/xkawi/react-universal-saga-modular) for a different structure of react-universal-saga that's more modular, scalable, and maintainable. :smile:
 
 ## Features
 
