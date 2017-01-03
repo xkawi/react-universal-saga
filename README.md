@@ -176,6 +176,7 @@ Then you set the `className` of your element to match one of the CSS classes in 
 
 ## Notable Alternatives
 
+* [Next.js](https://github.com/zeit/next.js)
 * [react-boilerplate](https://github.com/mxstbr/react-boilerplate)
 * [react-server](https://github.com/redfin/react-server)
 * [retax](https://github.com/retaxJS/retax)
