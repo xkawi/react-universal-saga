@@ -52,7 +52,7 @@ UPDATE: Checkout [react-universal-saga-modular](https://github.com/xkawi/react-u
 
 Core Concepts to learn if you are new to ReactJS and this repo:
 
-- Dump Components (Component) 
+- Dumb Components (Component) 
 - Smart Component (Container)
 - Actions - define available action types
 - Reducers - given previous state and an action, create a new state
