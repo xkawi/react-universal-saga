@@ -1,4 +1,4 @@
-import { Schema, arrayOf, normalize } from 'normalizr';
+import { schema, normalize } from 'normalizr';
 import { camelizeKeys } from 'humps';
 import 'isomorphic-fetch';
 import config from 'config';
@@ -22,7 +22,7 @@ const PROXY_ROOT = '/api';
 
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
-function callApi(endpoint, schema) {
+function callApi(endpoint, entitySchema) {
   let fullUrl = (endpoint.indexOf(PROXY_ROOT) === -1) ? `${PROXY_ROOT}/${endpoint}` : endpoint;
 
   // If request comes from server side, call API url directly.
@@ -43,15 +43,16 @@ function callApi(endpoint, schema) {
       const camelizedJson = camelizeKeys(json);
       const nextPageUrl = getNextPageUrl(response);
 
-      return Object.assign({},
-        normalize(camelizedJson, schema),
+      return Object.assign(
+        {},
+        normalize(camelizedJson, entitySchema),
         { nextPageUrl }
-        );
+      );
     })
     .then(
       response => ({ response }),
       error => ({ error: error.message || 'Something bad happened.' })
-      );
+    );
 }
 
 // We use this Normalizr schemas to transform API responses from a nested form
@@ -60,23 +61,21 @@ function callApi(endpoint, schema) {
 // consumption by reducers, because we can easily build a normalized tree
 // and keep it updated as we fetch more data.
 
-// Read more about Normalizr: https://github.com/gaearon/normalizr
+// Read more about Normalizr: https://github.com/paularmstrong/normalizr
 
 // Schemas for Github API responses.
-const userSchema = new Schema('users', {
+const userSchema = new schema.Entity('users', {}, {
   idAttribute: 'login'
 });
 
-const repoSchema = new Schema('repos', {
+const repoSchema = new schema.Entity('repos', {
+  owner: userSchema
+}, {
   idAttribute: 'fullName'
 });
 
-repoSchema.define({
-  owner: userSchema
-});
-
-const userSchemaArray = arrayOf(userSchema);
-const repoSchemaArray = arrayOf(repoSchema);
+const userSchemaArray = new schema.Array(userSchema);
+const repoSchemaArray = new schema.Array(repoSchema);
 
 // api services
 export const fetchUser = login => callApi(`users/${login}`, userSchema);

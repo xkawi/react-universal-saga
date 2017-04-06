@@ -29,10 +29,10 @@ UPDATE: Checkout [react-universal-saga-modular](https://github.com/xkawi/react-u
 ## Features
 
 * [Universal](https://medium.com/@mjackson/universal-javascript-4761051b7ae9) rendering, with Client and Server Side Data Fetching
-* [React](https://github.com/facebook/react) - latest version `^15.2.0`
+* [React](https://github.com/facebook/react) - latest version `^15.4.2`
 * [Redux](https://github.com/rackt/redux)'s futuristic [Flux](https://facebook.github.io/react/blog/2014/05/06/flux.html) implementation
 * [Redux Saga](https://github.com/yelouafi/redux-saga) to handle all of your Side Effects logic in a central place
-* [React Router](https://github.com/rackt/react-router)
+* [React Router](https://github.com/ReactTraining/react-router/tree/v2.8.1)
 * [Express](http://expressjs.com)
 * [Babel](http://babeljs.io) for ES6 and ES7 magic
 * [Webpack](http://webpack.github.io) for bundling
@@ -177,23 +177,14 @@ Then you set the `className` of your element to match one of the CSS classes in 
 ## Notable Alternatives
 
 * [Next.js](https://github.com/zeit/next.js)
+* [create-react-app](https://github.com/facebookincubator/create-react-app)
+* [react-universally](https://github.com/ctrlplusb/react-universally)
 * [react-boilerplate](https://github.com/mxstbr/react-boilerplate)
 * [react-server](https://github.com/redfin/react-server)
 * [retax](https://github.com/retaxJS/retax)
-* [react-universally](https://github.com/ctrlplusb/react-universally)
-* [create-react-app](https://github.com/facebookincubator/create-react-app)
-
-## TODO
-
-- [x] Use Proxy Server for better performance and security
-- [ ] Simple authentication saga flow
-- [ ] Provide a more realistic example that has navigation and form
-- [x] Upgrade to React ^15
-- [x] Use [Jest](https://facebook.github.io/jest/) for unit testing
-- [ ] Better handling of environment variables
-- [x] Borrow some best practices from react-boilerplate (refer to [react-universal-saga-modular](https://github.com/xkawi/react-universal-saga-modular))
 
 Any contribution is welcome.
 
 Cheers,
+
 Kawi

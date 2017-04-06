@@ -2,7 +2,7 @@
   "name": "react-universal-saga",
   "description": "Universal React App Starter ft. Redux Saga",
   "author": "Kawi Xiao <kawixiao@gmail.com> (http://github.com/xkawi)",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/xkawi/react-universal-saga"
@@ -87,8 +87,8 @@
   "dependencies": {
     "compression": "^1.6.0",
     "express": "^4.13.3",
-    "express-http-proxy": "^0.10.0",
-    "file-loader": "^0.9.0",
+    "express-http-proxy": "^0.11.0",
+    "file-loader": "^0.11.1",
     "hoist-non-react-statics": "^1.2.0",
     "humps": "^2.0.0",
     "invariant": "^2.2.1",
@@ -96,23 +96,22 @@
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
     "lodash": "^4.13.1",
-    "normalizr": "^2.0.1",
-    "pretty-error": "^2.0.1",
-    "react": "^15.2.0",
-    "react-dom": "^15.2.0",
+    "normalizr": "^3.2.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
     "react-ga": "^2.1.0",
-    "react-helmet": "^3.1.0",
-    "react-redux": "^4.4.5",
+    "react-helmet": "^5.0.2",
+    "react-redux": "^5.0.3",
     "react-router": "^2.5.2",
     "redux": "^3.5.2",
-    "redux-logger": "^2.6.1",
-    "redux-saga": "^0.12.0",
+    "redux-logger": "^3.0.1",
+    "redux-saga": "^0.14.5",
     "scroll-behavior": "^0.8.2",
     "serialize-javascript": "^1.1.2",
     "serve-favicon": "^2.3.0",
     "url-loader": "^0.5.7",
     "warning": "^3.0.0",
-    "webpack-isomorphic-tools": "^2.3.2"
+    "webpack-isomorphic-tools": "^3.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",
@@ -168,6 +167,6 @@
     "webpack-hot-middleware": "^2.12.0"
   },
   "engines": {
-    "node": "6.x.x"
+    "node": "7.x.x"
   }
 }

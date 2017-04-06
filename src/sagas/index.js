@@ -63,7 +63,7 @@ export function* loadStarred(login, loadMore) {
       fetchStarred,
       login,
       starredByUser.nextPageUrl || firstPageStarredUrl(login)
-      );
+    );
   }
 }
 
