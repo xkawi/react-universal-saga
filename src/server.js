@@ -40,7 +40,7 @@ app.use((req, res) => {
   }
 
   const memoryHistory = createMemoryHistory();
-  const store = configureStore(memoryHistory);
+  const store = configureStore();
   const allRoutes = getRoutes(store);
   const assets = webpackIsomorphicTools.assets();
 
