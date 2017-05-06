@@ -2,7 +2,7 @@
   "name": "react-universal-saga",
   "description": "Universal React App Starter ft. Redux Saga",
   "author": "Kawi Xiao <kawixiao@gmail.com> (http://github.com/xkawi)",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/xkawi/react-universal-saga"
