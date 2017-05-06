@@ -7,7 +7,6 @@ import http from 'http';
 import proxy from 'express-http-proxy';
 import path from 'path';
 import url from 'url';
-import PrettyError from 'pretty-error';
 import { match, createMemoryHistory } from 'react-router';
 
 import config from './config';
@@ -17,7 +16,6 @@ import getRoutes from './routes';
 import waitAll from './sagas/waitAll';
 import { Root } from 'containers';
 
-const pretty = new PrettyError();
 const app = new Express();
 const server = new http.Server(app);
 
@@ -59,7 +57,7 @@ app.use((req, res) => {
     if (redirectLocation) {
       res.redirect(redirectLocation.pathname + redirectLocation.search);
     } else if (error) {
-      console.error('ROUTER ERROR:', pretty.render(error));
+      console.error('ROUTER ERROR:', error);
       res.status(500);
       hydrateOnClient();
     } else if (renderProps) {
@@ -76,7 +74,9 @@ app.use((req, res) => {
       .map((component) => component.preload(renderProps.params, req))
       .reduce((result, preloader) => result.concat(preloader), []);
 
-      store.runSaga(waitAll(preloaders)).done.then(() => {
+      const runTasks = store.runSaga(waitAll(preloaders));
+
+      runTasks.done.then(() => {
         global.navigator = { userAgent: req.headers['user-agent'] };
 
         const htmlComponent = <Html assets={assets} component={rootComponent} store={store} />;
@@ -85,6 +85,8 @@ app.use((req, res) => {
       }).catch((e) => {
         console.log(e.stack);
       });
+
+      store.close();
     } else {
       res.status(404).send('Not found');
     }
