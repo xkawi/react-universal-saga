@@ -144,7 +144,7 @@ The client side entry point is reasonably named `client.js`. All it does is load
 
 ### Redux Middleware
 
-Currently, we only use Saga Middleware and Logger Middleware (for development). If you need to use or add custom middlewares, you can do so by modifying `store/configureStore.dev.js` (for dev env) or `store.configureStore.prod.js` (for prod env).
+Currently, we only use Saga Middleware and Logger Middleware (for development). If you need to use or add custom middlewares, you can do so by modifying `store/configureStore.dev.js` (for dev env) or `store/configureStore.prod.js` (for prod env).
 
 ### Handling Authentication
 
