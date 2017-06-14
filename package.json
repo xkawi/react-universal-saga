@@ -105,7 +105,7 @@
     "react-router": "^2.5.2",
     "redux": "^3.5.2",
     "redux-logger": "^3.0.1",
-    "redux-saga": "^0.14.5",
+    "redux-saga": "^0.15.3",
     "scroll-behavior": "^0.8.2",
     "serialize-javascript": "^1.1.2",
     "serve-favicon": "^2.3.0",
