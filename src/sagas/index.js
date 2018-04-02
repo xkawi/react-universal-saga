@@ -87,6 +87,7 @@ function* loadStargazers(fullName, loadMore) {
 function* watchNavigate() {
   while (true) {
     const { pathname } = yield take(actions.NAVIGATE);
+    console.log('pathname: ', pathname);
     yield history.push(pathname);
   }
 }

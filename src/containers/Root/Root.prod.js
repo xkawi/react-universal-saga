@@ -1,8 +1,10 @@
 import has from 'lodash/has';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { Router, RouterContext } from 'react-router';
+import { BrowserRouter, StaticRouter } from 'react-router-dom';
 import GoogleAnalytics from 'react-ga';
+import App from '../App/App';
 
 export default class Root extends Component {
   constructor(props) {
@@ -20,13 +22,17 @@ export default class Root extends Component {
     }
   }
   render() {
-    const { store, history, routes, type, renderProps } = this.props;
+    const { store, routes, type, renderProps } = this.props;
     return (
       <Provider store={store}>
         <div>
           {type === 'server'
-            ? <RouterContext {...renderProps} />
-            : <Router history={history} routes={routes} onUpdate={this.onUpdate} />}
+            ? <StaticRouter {...renderProps} location={location} context={context}>
+              <App routes={routes} />
+            </StaticRouter>
+            : <BrowserRouter>
+              <App routes={routes} />
+            </BrowserRouter>}
         </div>
       </Provider>
     );
@@ -35,8 +41,7 @@ export default class Root extends Component {
 
 Root.propTypes = {
   store: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
-  routes: PropTypes.node.isRequired,
+  routes: PropTypes.array.isRequired,
   type: PropTypes.object,
   renderProps: PropTypes.object
 };

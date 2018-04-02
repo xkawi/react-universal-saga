@@ -7,12 +7,12 @@ import http from 'http';
 import proxy from 'express-http-proxy';
 import path from 'path';
 import url from 'url';
-import { match, createMemoryHistory } from 'react-router';
+import { createMemoryHistory } from 'history';
 
 import config from './config';
 import configureStore from './store/configureStore';
 import Html from './helpers/Html';
-import getRoutes from './routes';
+import routes from './routes';
 import waitAll from './sagas/waitAll';
 import { Root } from 'containers';
 
@@ -39,7 +39,6 @@ app.use((req, res) => {
 
   const memoryHistory = createMemoryHistory();
   const store = configureStore();
-  const allRoutes = getRoutes(store);
   const assets = webpackIsomorphicTools.assets();
 
   function hydrateOnClient() {
@@ -52,45 +51,73 @@ app.use((req, res) => {
     hydrateOnClient();
     return;
   }
+  const rootComponent = (<Root
+    store={store}
+    routes={routes}
+    location={req.url}
+    history={memoryHistory}
+    renderProps={{}}
+    type="server"
+  />);
 
-  match({ routes: allRoutes, location: req.url }, (error, redirectLocation, renderProps) => {
-    if (redirectLocation) {
-      res.redirect(redirectLocation.pathname + redirectLocation.search);
-    } else if (error) {
-      console.error('ROUTER ERROR:', error);
-      res.status(500);
-      hydrateOnClient();
-    } else if (renderProps) {
-      const rootComponent = (<Root
-        store={store}
-        routes={allRoutes}
-        history={memoryHistory}
-        renderProps={renderProps}
-        type="server"
-      />);
+  const preloaders = routes
+    .filter((route) => route.component && route.component.preload)
+    .map((route) => route.component.preload({}, req))
+    .reduce((result, preloader) => result.concat(preloader), []);
 
-      const preloaders = renderProps.components
-      .filter((component) => component && component.preload)
-      .map((component) => component.preload(renderProps.params, req))
-      .reduce((result, preloader) => result.concat(preloader), []);
+  const runTasks = store.runSaga(waitAll(preloaders));
 
-      const runTasks = store.runSaga(waitAll(preloaders));
+  runTasks.done.then(() => {
+    global.navigator = { userAgent: req.headers['user-agent'] };
 
-      runTasks.done.then(() => {
-        global.navigator = { userAgent: req.headers['user-agent'] };
-
-        const htmlComponent = <Html assets={assets} component={rootComponent} store={store} />;
-        const renderedDomString = ReactDOMServer.renderToString(htmlComponent);
-        res.status(200).send(`<!doctype html>\n ${renderedDomString}`);
-      }).catch((e) => {
-        console.log(e.stack);
-      });
-
-      store.close();
-    } else {
-      res.status(404).send('Not found');
-    }
+    const htmlComponent = <Html assets={assets} component={rootComponent} store={store} />;
+    const renderedDomString = ReactDOMServer.renderToString(htmlComponent);
+    res.status(200).send(`<!doctype html>\n ${renderedDomString}`);
+  }).catch((e) => {
+    console.log(e.stack);
   });
+
+  store.close();
+
+  // match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+  //   if (redirectLocation) {
+  //     res.redirect(redirectLocation.pathname + redirectLocation.search);
+  //   } else if (error) {
+  //     console.error('ROUTER ERROR:', error);
+  //     res.status(500);
+  //     hydrateOnClient();
+  //   } else if (renderProps) {
+  //     const rootComponent = (<Root
+  //       store={store}
+  //       routes={routes}
+  //       location={req.url}
+  //       history={memoryHistory}
+  //       renderProps={renderProps}
+  //       type="server"
+  //     />);
+  //
+  //     const preloaders = renderProps.components
+  //     .filter((component) => component && component.preload)
+  //     .map((component) => component.preload(renderProps.params, req))
+  //     .reduce((result, preloader) => result.concat(preloader), []);
+  //
+  //     const runTasks = store.runSaga(waitAll(preloaders));
+  //
+  //     runTasks.done.then(() => {
+  //       global.navigator = { userAgent: req.headers['user-agent'] };
+  //
+  //       const htmlComponent = <Html assets={assets} component={rootComponent} store={store} />;
+  //       const renderedDomString = ReactDOMServer.renderToString(htmlComponent);
+  //       res.status(200).send(`<!doctype html>\n ${renderedDomString}`);
+  //     }).catch((e) => {
+  //       console.log(e.stack);
+  //     });
+  //
+  //     store.close();
+  //   } else {
+  //     res.status(404).send('Not found');
+  //   }
+  // });
 });
 
 if (config.port) {

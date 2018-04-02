@@ -1,6 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import { Switch, Route } from 'react-router';
+// import routes from '../../routes';
 import { Explore } from 'components';
 
 import {
@@ -17,22 +20,22 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.props.updateRouterState({
-      pathname: this.props.location.pathname,
-      params: this.props.params
-    });
+    // this.props.updateRouterState({
+    //   pathname: this.props.location.pathname,
+    //   params: this.props.params
+    // });
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.errorMessage) {
       // handle error here
     }
-    if (this.props.location.pathname !== nextProps.location.pathname) {
-      this.props.updateRouterState({
-        pathname: nextProps.location.pathname,
-        params: nextProps.params
-      });
-    }
+    // if (this.props.location.pathname !== nextProps.location.pathname) {
+    //   this.props.updateRouterState({
+    //     pathname: nextProps.location.pathname,
+    //     params: nextProps.params
+    //   });
+    // }
   }
 
   handleDismissClick(e) {
@@ -44,8 +47,16 @@ class App extends Component {
     this.props.navigate(`/${nextValue}`);
   }
 
+  renderRoutes() {
+    return (
+      <Switch>
+        {this.props.routes.map((route, i) => <Route key={i} {...route} />)}
+      </Switch>
+    );
+  }
+
   render() {
-    const { children, inputValue } = this.props;
+    const { inputValue } = this.props;
     return (
       <div className={styles.app}>
         <Helmet
@@ -53,11 +64,9 @@ class App extends Component {
           meta={[{ property: 'og:site_name', content: 'React Universal Saga' }]}
         />
         <Explore value={inputValue} onChange={this.handleChange} />
-        <div className={styles.content}>
-          {children}
-        </div>
+        {this.renderRoutes()}
       </div>
-      );
+    );
   }
 }
 
@@ -67,11 +76,8 @@ App.propTypes = {
   navigate: PropTypes.func.isRequired,
   updateRouterState: PropTypes.func.isRequired,
   resetErrorMessage: PropTypes.func.isRequired,
-  children: PropTypes.node,
-  location: PropTypes.shape({
-    pathname: PropTypes.string
-  }),
-  params: PropTypes.object
+  params: PropTypes.object,
+  routes: PropTypes.array
 };
 
 // function preload() {
