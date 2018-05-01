@@ -89,6 +89,7 @@
     "express": "^4.13.3",
     "express-http-proxy": "^0.11.0",
     "file-loader": "^0.11.1",
+    "history": "3",
     "hoist-non-react-statics": "^1.2.0",
     "humps": "^2.0.0",
     "invariant": "^2.2.1",
@@ -97,12 +98,14 @@
     "less-loader": "^2.2.1",
     "lodash": "^4.13.1",
     "normalizr": "^3.2.2",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
     "react-ga": "^2.1.0",
     "react-helmet": "^5.0.2",
     "react-redux": "^5.0.3",
-    "react-router": "^2.5.2",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "redux": "^3.5.2",
     "redux-logger": "^3.0.1",
     "redux-saga": "^0.15.3",
@@ -134,9 +137,9 @@
     "bootstrap-sass": "^3.3.5",
     "clean-webpack-plugin": "^0.1.6",
     "concurrently": "^3.1.0",
+    "css-loader": "^0.25.0",
     "eslint": "2.13.1",
     "eslint-config-airbnb": "9.0.1",
-    "css-loader": "^0.25.0",
     "eslint-loader": "^1.0.0",
     "eslint-plugin-import": "^1.9.2",
     "eslint-plugin-jsx-a11y": "^1.5.3",
@@ -167,6 +170,6 @@
     "webpack-hot-middleware": "^2.12.0"
   },
   "engines": {
-    "node": "7.x.x"
+    "node": "8.x.x"
   }
 }
