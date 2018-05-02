@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { loadRepoPage, loadMoreStargazers } from '../../actions';
 import { Repo, User, List } from 'components';

@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 
 export default class User extends Component {
   render() {

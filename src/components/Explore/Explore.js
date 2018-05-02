@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, PropTypes } from 'react';
 
 const GITHUB_REPO = 'https://github.com/xkawi/react-universal-saga';
 

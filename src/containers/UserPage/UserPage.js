@@ -1,6 +1,5 @@
 import zip from 'lodash/zip';
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { loadUserPage, loadMoreStarred } from '../../actions';
 import { loadUser, loadStarred } from '../../sagas';

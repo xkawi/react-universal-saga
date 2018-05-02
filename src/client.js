@@ -4,7 +4,7 @@ import GoogleAnalytics from 'react-ga';
 
 import { Root } from 'containers';
 import rootSaga from './sagas';
-import routes from './routes';
+import getRoutes from './routes';
 import { history } from './services';
 import configureStore from './store/configureStore';
 import config from './config';
@@ -20,7 +20,7 @@ render(
   <Root
     store={store}
     history={history}
-    routes={routes}
+    routes={getRoutes(store)}
   />,
   dest
 );
